@@ -1,8 +1,23 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Wind & Water Blue Theme */
+  --background: #f0f9ff;
+  --foreground: #0c4a6e;
+
+  /* Wind colors */
+  --wind-light: #dbeafe;
+  --wind: #3b82f6;
+  --wind-dark: #1d4ed8;
+
+  /* Water colors */
+  --water-light: #cffafe;
+  --water: #06b6d4;
+  --water-dark: #0891b2;
+
+  /* Ocean depth */
+  --ocean: #1e40af;
+  --deep-ocean: #1e3a8a;
 }
 
 @theme inline {
@@ -10,17 +25,66 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* Custom wind & water colors */
+  --color-wind: var(--wind);
+  --color-water: var(--water);
+  --color-ocean: var(--ocean);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #0c4a6e;
+    --foreground: #f0f9ff;
   }
 }
 
 body {
-  background: var(--background);
+  background: linear-gradient(180deg, #f0f9ff 0%, #e0f2fe 50%, #bae6fd 100%);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+}
+
+/* Wind wave animation */
+@keyframes wind-wave {
+  0%,
+  100% {
+    transform: translateX(0) translateY(0);
+  }
+  50% {
+    transform: translateX(-10px) translateY(5px);
+  }
+}
+
+.wind-wave {
+  animation: wind-wave 4s ease-in-out infinite;
+}
+
+/* Water ripple effect */
+@keyframes water-ripple {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+}
+
+.water-ripple {
+  animation: water-ripple 3s ease-in-out infinite;
+}
+
+/* Glass morphism card */
+.glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 8px 32px rgba(6, 182, 212, 0.1);
 }

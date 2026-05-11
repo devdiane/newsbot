@@ -5,20 +5,42 @@ export interface NewsItem {
   pubDate?: string;
 }
 
-// Expanded keywords per project requirement
-const KEYWORDS = [
+// Water-related keywords
+const WATER_KEYWORDS = [
   "water",
   "dam",
   "reservoir",
   "flood",
   "irrigation",
   "hydropower",
-  "wind",
-  "turbine",
-  "DOE",
-  "DENR",
-  "LWUA",
 ];
+
+// Wind-related keywords
+const WIND_KEYWORDS = ["wind", "turbine", "DOE", "DENR", "LWUA"];
+
+// Categorize article as 'wind' or 'water'
+export function categorizeArticle(item: NewsItem): string {
+  const searchText = [item.title || "", item.content || ""]
+    .join(" ")
+    .toLowerCase();
+
+  // Check wind keywords first
+  for (const keyword of WIND_KEYWORDS) {
+    if (searchText.includes(keyword.toLowerCase())) {
+      return "wind";
+    }
+  }
+
+  // Check water keywords
+  for (const keyword of WATER_KEYWORDS) {
+    if (searchText.includes(keyword.toLowerCase())) {
+      return "water";
+    }
+  }
+
+  // Default to water if matches general keywords (backward compatibility)
+  return "water";
+}
 
 // Normalize text for comparison
 function normalize(text: string | undefined): string {
@@ -51,13 +73,16 @@ function isDuplicate(
   return false;
 }
 
+// Combined keywords for filtering
+const ALL_KEYWORDS = [...WATER_KEYWORDS, ...WIND_KEYWORDS];
+
 // Check if item matches any keyword (checks both title AND content/description)
 function matchesKeywords(item: NewsItem): boolean {
   const searchText = [item.title || "", item.content || ""]
     .join(" ")
     .toLowerCase();
 
-  for (const keyword of KEYWORDS) {
+  for (const keyword of ALL_KEYWORDS) {
     if (searchText.includes(keyword.toLowerCase())) {
       console.log(
         `[filter] Matched keyword "${keyword}" in:`,

@@ -3,15 +3,22 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "sqlite"
   url      = env("DATABASE_URL")
 }
 
 model Article {
   id          String   @id @default(cuid())
   title       String
-  link        String   @unique
+  link       String   @unique
+  category    String   // 'wind' or 'water'
   publishedAt DateTime?
   sent        Boolean  @default(false)
   createdAt   DateTime @default(now())
+}
+
+model Settings {
+  id        String   @id @default("default")
+  lastRun   DateTime?
+  updatedAt DateTime @default(now())
 }
