@@ -1,0 +1,15 @@
+name: News Scheduler
+
+on:
+  schedule:
+    - cron: "0 1 * * *" # 1:00 AM UTC = 9:00 AM PH
+  workflow_dispatch: # (optional but important for testing manually)
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Call API
+        run: |
+          curl -X GET https://newsbot-vert.vercel.app/api/fetch-news
