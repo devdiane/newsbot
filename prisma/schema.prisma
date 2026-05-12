@@ -3,9 +3,10 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
 
 model Article {
   id          String   @id @default(cuid())
@@ -21,4 +22,10 @@ model Settings {
   id        String   @id @default("default")
   lastRun   DateTime?
   updatedAt DateTime @default(now())
+}
+
+model Log {
+  id        Int      @id @default(autoincrement())
+  message   String
+  createdAt DateTime @default(now())
 }
