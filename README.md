@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📰 Automated News Aggregation & Notification System
 
-## Getting Started
+A web application that automatically fetches, processes, and delivers real-time news updates from multiple sources via messaging platforms such as Telegram and Discord. Built with a modern full-stack JavaScript ecosystem and designed for automation, scalability, and reliability.
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+📢 Join Updates Channel
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+👉 Telegram Group: https://t.me/+paJ6MONOSM5jNDZl 
+📡 Get real-time updates, alerts, and system notifications
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🚀 Features
 
-To learn more about Next.js, take a look at the following resources:
+- 🔄 **Automated News Fetching**
+  - Aggregates content from RSS feeds and external APIs
+- 🧠 **Smart Filtering System**
+  - Categorizes news into topics (e.g., Wind Projects, Water District Updates, etc.)
+- 🧹 **Deduplication Engine**
+  - Prevents duplicate articles from being processed or sent
+- 📢 **Multi-Channel Notifications**
+  - Sends updates via Telegram, Discord, or other webhook-based services
+- ⏰ **Scheduled Background Jobs**
+  - Automated daily execution using cron-based scheduling (GitHub Actions / server scheduler)
+- 📊 **System Monitoring**
+  - Basic stats and API endpoints for tracking system health and activity
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🛠 Tech Stack
 
-## Deploy on Vercel
+**Frontend / Backend**
+- Next.js (React-based full-stack framework)
+- Node.js (API routes & server logic)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**Database**
+- SQLite / PostgreSQL / Supabase (depending on environment)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**Deployment**
+- Vercel / Railway / Render
+
+**Automation**
+- GitHub Actions (Cron Jobs for scheduled execution)
+
+**Integrations**
+- Telegram Bot API
+- Discord Webhooks
+- RSS Feed Sources
+
+**Development Tools**
+- VS Code
+- Git & GitHub
+- AI-assisted development tools (ChatGPT, Copilot, etc.)
+
+---
