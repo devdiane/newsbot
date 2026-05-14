@@ -12,4 +12,4 @@ jobs:
     steps:
       - name: Call API
         run: |
-          curl -X GET https://newsbot-vert.vercel.app/api/fetch-news
+          curl -X GET https://newsbot-vert.vercel.app/api/fetch
