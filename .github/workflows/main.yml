@@ -2,8 +2,9 @@ name: News Scheduler
 
 on:
   schedule:
-    - cron: "0 1 * * *" # 1:00 AM UTC = 9:00 AM PH
-  workflow_dispatch: # (optional but important for testing manually)
+    # 1:07 AM UTC = 9:07 AM PH (Using an off-peak minute for better reliability)
+    - cron: "7 1 * * *" 
+  workflow_dispatch: 
 
 jobs:
   ping:
