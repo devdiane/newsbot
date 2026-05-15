@@ -15,30 +15,30 @@ const WATER_KEYWORDS = [
   "hydropower",
 ];
 
-// Wind-related keywords
-const WIND_KEYWORDS = ["wind", "turbine", "DOE", "DENR", "LWUA"];
+// Wind PROJECT-related keywords (NOT weather wind)
+const WIND_PROJECT_KEYWORDS = [
+  "wind farm",
+  "wind energy",
+  "wind power",
+  "wind project",
+  "wind turbine project",
+  "offshore wind",
+  "onshore wind",
+];
 
 // Categorize article as 'wind' or 'water'
 export function categorizeArticle(item: NewsItem): string {
-  const searchText = [item.title || "", item.content || ""]
-    .join(" ")
-    .toLowerCase();
+  const text = `${item.title || ""} ${item.content || ""}`.toLowerCase();
 
-  // Check wind keywords first
-  for (const keyword of WIND_KEYWORDS) {
-    if (searchText.includes(keyword.toLowerCase())) {
-      return "wind";
-    }
-  }
+  // Must match wind ENERGY context only
+  const isWindProject = WIND_PROJECT_KEYWORDS.some((k) => text.includes(k));
 
-  // Check water keywords
-  for (const keyword of WATER_KEYWORDS) {
-    if (searchText.includes(keyword.toLowerCase())) {
-      return "water";
-    }
-  }
+  if (isWindProject) return "wind";
 
-  // Default to water if matches general keywords (backward compatibility)
+  const isWater = WATER_KEYWORDS.some((k) => text.includes(k));
+
+  if (isWater) return "water";
+
   return "water";
 }
 
@@ -74,7 +74,7 @@ function isDuplicate(
 }
 
 // Combined keywords for filtering
-const ALL_KEYWORDS = [...WATER_KEYWORDS, ...WIND_KEYWORDS];
+const ALL_KEYWORDS = [...WATER_KEYWORDS, ...WIND_PROJECT_KEYWORDS];
 
 // Check if item matches any keyword (checks both title AND content/description)
 function matchesKeywords(item: NewsItem): boolean {
